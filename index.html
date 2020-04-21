@@ -12,7 +12,7 @@
     }
 
     #cube {
-      height: 100vh;
+      height: 90vh;
 
     }
 
@@ -51,12 +51,13 @@
         scrollHandler(event) {
           var scrollHeight = document.documentElement.scrollHeight
           var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-          var offsetTop = document.querySelector('#cube').clientHeight
+          var innerHeight = window.innerHeight
           console.log('scrollHeight', scrollHeight)
           console.log('scrollTop', scrollTop)
-          console.log('offsetTop', offsetTop)
-          console.log(scrollHeight - offsetTop)
-          if (scrollHeight - offsetTop === scrollTop) {
+          console.log('innerHeight', innerHeight)
+          console.log(scrollHeight - innerHeight)
+          console.log(window.innerHeight)
+          if (scrollHeight - innerHeight === scrollTop) {
             this.isBottom = true
           } else {
             this.isBottom = false
