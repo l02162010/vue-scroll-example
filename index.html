@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
   <title>Document</title>
   <style>
     body {
@@ -44,6 +45,9 @@
       created() {
         window.addEventListener('scroll', this.scrollHandler)
       },
+      mounted() {
+        this.featchAPI()
+      },
       destroyed() {
         window.removeEventListener('scroll', this.scrollHandler)
       },
@@ -63,6 +67,20 @@
             this.isBottom = false
           }
           console.log(this.isBottom)
+        },
+        featchAPI() {
+          axios.get('https://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/Streaming/City/Hsinchu?$top=30&$format=JSON')
+            .then(function (response) {
+              // handle success
+              console.log(response);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
         }
       }
     })
